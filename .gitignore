@@ -1,0 +1,18 @@
+# Raw FOIA data: not stored in git. Download it from MuckRock -- see README.MD.
+# The folder itself is kept via its placeholder README.
+raw-response/*
+!raw-response/README.md
+
+# Generated artifacts: rebuilt locally by the scripts in script/ -- see README.MD.
+cache/*
+!cache/README.md
+
+# The downloaded FOIA zip (509 MiB)
+2-3-26_MR201972.zip
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+#local doc to ignore
+local-doc
