@@ -26,9 +26,10 @@ The ratio is roughly 500k queries per month from the Flock network, to 3 or 4,00
 Numbers, interactive version, and methodology: [`federal-access-timeline/`](federal-access-timeline/)
 
 13 federal agencies searched Kenner's cameras through the Flock network, including Homeland Security Investigations (175 searches, ending May 1, 2025) and US Border Patrol (209 searches, ending June 23, 2025).
-12 of the 13 had stopped by mid-2025, most in a wave between March and June 2025. 6 of the 13 accounts are tagged `[Inactive]` in Flock's own export; all 6 stopped searching, but so did 6 agencies without the tag.
-The exception is the US Postal Inspection Service: 54,035 searches — more than everyone else combined — still running when the data ends, after an unexplained 8-month pause from July 2024 to April 2025.
-Kenner's event logs contain no grant or revocation entries for any federal agency, so each agency's last search date is the best available evidence of when its access was cut.
+12 of the 13 had stopped by mid-2025.
+6 of the 13 accounts are tagged `[Inactive]` in Flock's own export.
+
+The exception is the US Postal Inspection Service: 54,035 searches, still running when the data ends, after an 8-month pause from July 2024 to April 2025.
 
 ## Who searches Kenner's cameras: concentration
 
