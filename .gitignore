@@ -3,7 +3,7 @@
 raw-response/*
 !raw-response/README.md
 
-# Generated artifacts: rebuilt locally by the scripts in script/ -- see README.MD.
+# Generated artifacts: rebuilt locally by the scripts in setup-scripts/ -- see README.MD.
 cache/*
 !cache/README.md
 

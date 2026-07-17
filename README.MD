@@ -9,12 +9,15 @@ You download the former and rebuild the latter.
 | Folder | Role |
 |---|---|
 | `raw-response/` | the FOIA content, untouched (downloaded, not in git) |
-| `script/` | code that builds everything else from the raw input |
+| `setup-scripts/` | code that builds everything else from the raw input |
 | `cache/` | generated artifacts: aggregated CSVs + `flock.db` (rebuilt, not in git) |
 | `results/` | human-friendly outputs (graphs, tables) |
 
 Requirements: Python 3.8+ with SQLite 3.37+ (`python3 -c "import sqlite3; print(sqlite3.sqlite_version)"`).
-No external libraries.
+No external libraries for the data pipeline (`setup-scripts/`). The graph
+scripts (in `results/`, one folder per graph) use plotly and run via
+[uv](https://docs.astral.sh/uv/), which handles their dependencies
+automatically.
 
 ## Obtain the FOIA results
 
@@ -36,7 +39,7 @@ Or, as a convenience step, this script does the same download, checksum,
 and extraction, and can be re-run safely:
 
 ```
-python3 script/00_download_foia_result.py
+python3 setup-scripts/00_download_foia_result.py
 ```
 
 Expected output:
@@ -102,7 +105,7 @@ record. Each script prints its own audit trail and exits with an error if
 any count is off; compare yours against the expected outputs below.
 
 ```
-python3 script/01_aggregate_events.py
+python3 setup-scripts/01_aggregate_events.py
 ```
 
 Expected output:
@@ -120,7 +123,7 @@ Event types:
 ```
 
 ```
-python3 script/01_aggregate_org_audit.py
+python3 setup-scripts/01_aggregate_org_audit.py
 ```
 
 Expected output:
@@ -143,7 +146,7 @@ Search types:
 ```
 
 ```
-python3 script/01_aggregate_network_audit.py   # 10.3M rows, takes a few minutes
+python3 setup-scripts/01_aggregate_network_audit.py   # 10.3M rows, takes a few minutes
 ```
 
 Expected output:
@@ -182,7 +185,7 @@ Step 02 loads the three CSVs into `cache/flock.db` (STRICT tables, typed
 columns, no further transformation):
 
 ```
-python3 script/02_load_sqlite.py
+python3 setup-scripts/02_load_sqlite.py
 ```
 
 Expected output:
@@ -204,4 +207,48 @@ Manual check:
 ```
 python3 -m sqlite3 cache/flock.db "SELECT search_type, COUNT(*) FROM org_audit GROUP BY search_type;"
 # freeform|245  lookup|15584  search|51104
+```
+
+## Graphs
+
+Each graph lives in its own folder under `results/`, holding the script
+that computes it and everything it produces: a self-contained interactive
+HTML page and static SVG/PNG images. The scripts read `cache/flock.db` --
+the database is the single source of data, and each script prints the
+numbers it plots so a chart can be checked by re-running its SQL queries.
+Unlike the pipeline, they use an external library (plotly), so they are
+run with `uv`, which reads each script's dependency header and installs
+what it needs on first run:
+
+```
+uv run results/internal-vs-network/internal_vs_network.py
+```
+
+Each script prints the numbers it plots plus a totals check against the
+known row counts, and fails instead of drawing a wrong chart. Charts use
+full months only (Jan 2024 - Dec 2025); January 2026 is excluded because
+the FOIA response only covers it through Jan 16.
+
+One-time setup: plotly's image exporter (kaleido) needs a Chrome binary
+and will say so if it can't find one. Fetch a private headless copy with:
+
+```
+uv run --with kaleido python -c "import kaleido; kaleido.get_chrome_sync()"
+```
+
+Expected output of `internal_vs_network.py`:
+
+```
+Verification: monthly buckets vs known totals
+  internal (org_audit): total=65874 expected=65874 OK
+  external (network_audit minus Kenner): total=9979019 expected=9979019 OK
+
+month    kenner_internal external_network
+2024-01            3,359          195,848
+...
+2025-12            3,363          531,363
+
+Wrote .../results/internal-vs-network/internal_vs_network.html
+Wrote .../results/internal-vs-network/internal_vs_network.svg
+Wrote .../results/internal-vs-network/internal_vs_network.png
 ```
