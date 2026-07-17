@@ -127,14 +127,19 @@ def build_figure(months, internal, external):
             rangemode="tozero", separatethousands=True,
         ),
         legend=dict(orientation="h", yanchor="bottom", y=1.0, x=0),
-        width=1000, height=600,
-        margin=dict(b=90),
+        width=1000, height=620,
+        margin=dict(b=130),
     )
     fig.add_annotation(
-        text="Source: Kenner LA PD FOIA response via MuckRock (Flock audit"
-             " logs). Full months only: Jan 2024 - Dec 2025."
-             " Methodology: results/internal-vs-network/ in the"
-             " eos-foia-flock-kenner repo.",
+        text="Source: this public record request (Flock audit logs, full"
+             " months only Jan 2024 - Dec 2025):"
+             '<br><a href="https://www.muckrock.com/foi/kenner-16256/'
+             'public-records-request-flock-audits-201972/">'
+             "https://www.muckrock.com/foi/kenner-16256/"
+             "public-records-request-flock-audits-201972/</a>"
+             "<br>More info on the methodology on"
+             ' <a href="https://github.com/eye-on-surveillance/'
+             'foia-flock-kenner">github.com/eye-on-surveillance</a>',
         xref="paper", yref="paper", x=0, y=-0.18,
         showarrow=False, font=dict(size=10, color="#666"),
     )

@@ -13,13 +13,10 @@ You download the former and rebuild the latter.
 | `cache/` | generated artifacts: aggregated CSVs + `flock.db` (rebuilt, not in git) |
 | `results/` | human-friendly outputs (graphs, tables) |
 
-Requirements: Python 3.8+ with SQLite 3.37+ (`python3 -c "import sqlite3; print(sqlite3.sqlite_version)"`).
-No external libraries for the data pipeline (`setup-scripts/`). The graph
-scripts (in `results/`, one folder per graph) use plotly and run via
-[uv](https://docs.astral.sh/uv/), which handles their dependencies
-automatically.
+Requirements: Python 3.8+ with SQLite 3.37+ 
+ The graph scripts use plotly and run via [uv](https://docs.astral.sh/uv/), which handles their dependencies.
 
-## Obtain the FOIA results
+## Obtain the public records request results
 
 Download the zip and verify it:
 
@@ -99,7 +96,7 @@ see `DATA_DICTIONARY.md` for detail.
 
 ## Aggregate the results to work with them
 
-One CSV per month is not practical, and a small DB is handy. Step 01
+One CSV per month is not practical. Step 01
 aggregates each source into a single clean CSV in `cache/`, one line per
 record. Each script prints its own audit trail and exits with an error if
 any count is off; compare yours against the expected outputs below.

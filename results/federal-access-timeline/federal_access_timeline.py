@@ -219,16 +219,22 @@ def build_figure(per_org):
         # bottom, first agency to stop at the top.
         yaxis=dict(categoryorder="array",
                    categoryarray=[labels[org] for org in reversed(order)]),
-        width=1100, height=680,
-        margin=dict(t=150, b=90),
+        width=1100, height=700,
+        margin=dict(t=150, b=110),
     )
     fig.add_annotation(
-        text="Source: Kenner LA PD FOIA response via MuckRock (Flock audit"
-             " logs, Jan 2024 - Jan 16 2026). No grant/revocation events"
-             " appear in Kenner's event logs;<br>last search dates and the"
-             " [Inactive] tags in the export are the best cutoff evidence."
-             " Methodology: results/federal-access-timeline/,"
-             " eos-foia-flock-kenner repo.",
+        text="Source: this public record request (Flock audit logs"
+             " Jan 2024 - Jan 16 2026):"
+             ' <a href="https://www.muckrock.com/foi/kenner-16256/'
+             'public-records-request-flock-audits-201972/">'
+             "https://www.muckrock.com/foi/kenner-16256/"
+             "public-records-request-flock-audits-201972/</a>"
+             "<br>No grant/revocation events appear in Kenner's event logs;"
+             " last search dates and the [Inactive] tags in the export are"
+             " the best cutoff evidence."
+             "<br>More info on the methodology on"
+             ' <a href="https://github.com/eye-on-surveillance/'
+             'foia-flock-kenner">github.com/eye-on-surveillance</a>',
         xref="paper", yref="paper", x=0, y=-0.16,
         showarrow=False, font=dict(size=10, color="#666"),
     )
