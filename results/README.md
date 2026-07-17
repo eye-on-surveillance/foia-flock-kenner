@@ -1,7 +1,13 @@
-This is an overview of the data analysis we can do, leveraging the aggregated raw data.
+# Usage of Kenner PD Flock Camera. 2024/2025
 
-Each graph gets a folder with the detailed calculation for that graph.
-Inside each folder: a small and hopefully self-contained script to generate the graph, the map, or the data-viz.
+This is an overview of the data analysis Eye On Surveillance ran over the result of a public records request, focused on the usage of Flock camera in Kenner, LA. 
+The raw data, as provided by Kenner PD, is accessible here() for your own examination. 
+For conveniance, we aggregated the raw data in a small database. Our methodology is described at the root level of this repository. 
+
+The reader can examine how we got there, and redo those graph from scatch himself.
+
+Each visualisation gets a folder with the detailed calculation for that graph.
+Inside each folder: a small and self-contained script to generate the graph, the map, or the data-viz.
 We try to keep it to basic SQL queries on the SQLite db built by `../setup-scripts/`.
 
 ## Internal usage VS network usage
