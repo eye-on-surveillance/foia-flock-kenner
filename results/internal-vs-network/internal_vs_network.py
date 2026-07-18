@@ -131,7 +131,7 @@ def build_figure(months, internal, external):
         margin=dict(b=130),
     )
     fig.add_annotation(
-        text="Source: this public record request (Flock audit logs, full"
+        text="Source: public record request (Flock audit logs, full"
              " months only Jan 2024 - Dec 2025):"
              '<br><a href="https://www.muckrock.com/foi/kenner-16256/'
              'public-records-request-flock-audits-201972/">'

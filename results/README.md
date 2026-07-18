@@ -1,7 +1,7 @@
 # Usage of Kenner PD Flock Camera. 2024/2025
 
 This is an overview of the data analysis Eye On Surveillance ran over the result of a public records request, focused on the usage of Flock camera in Kenner, LA. 
-The raw data, as provided by Kenner PD, is accessible here() for your own examination. 
+The raw data, as provided by Kenner PD, is accessible [here](https://www.muckrock.com/foi/kenner-16256/public-records-request-flock-audits-201972/) for your own examination. 
 For conveniance, we aggregated the raw data in a small database. Our methodology is described at the root level of this repository. 
 
 The reader can examine how we got there, and redo those graph from scatch himself.
@@ -39,4 +39,14 @@ Numbers, interactive version, and methodology: [`agency-concentration/`](agency-
 
 5,254 outside agencies searched Kenner's cameras. Two of them, Houston TX PD (9.8%) and Dallas TX PD (8.6%), account for more searches than the next 48 agencies combined.
 The concentration is double-edged: the top 100 agencies represent 51.8% of the 10.26 million outside searches, but the long tail of 5,154 smaller agencies still adds up to 48.2%.
+
+## Where the searches come from
+
+[![Choropleth map: searches of Kenner's cameras by the agency's home state](searches-by-state/searches_by_state.png)](searches-by-state/searches_by_state.png)
+
+Numbers, interactive version, and methodology: [`searches-by-state/`](searches-by-state/)
+
+Agencies from 47 states plus Washington DC searched Kenner's cameras; only Alaska, Hawaii and Montana never did.
+Texas leads by far (2.69M searches, 26%, mostly Houston and Dallas PDs), followed by Georgia (1.09M), Florida, Louisiana and Illinois.
+The export has no state column: the state is parsed from the agency's name (two-letter code or full state name), which attributes 99.1% of the searches; the remaining 0.3% are multi-state bodies (regional intelligence centers, railroads, NCMEC) listed in the script's output.
 The median agency ran just 221 searches that touched Kenner's cameras over the two years.

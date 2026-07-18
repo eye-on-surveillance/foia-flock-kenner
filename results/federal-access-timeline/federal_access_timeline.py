@@ -223,7 +223,7 @@ def build_figure(per_org):
         margin=dict(t=150, b=110),
     )
     fig.add_annotation(
-        text="Source: this public record request (Flock audit logs"
+        text="Source: public record request (Flock audit logs"
              " Jan 2024 - Jan 16 2026):"
              ' <a href="https://www.muckrock.com/foi/kenner-16256/'
              'public-records-request-flock-audits-201972/">'

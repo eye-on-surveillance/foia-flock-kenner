@@ -131,7 +131,7 @@ def build_figure(ranked, total):
         margin=dict(t=110, b=80),
     )
     fig.add_annotation(
-        text="Source: this public record request (Flock audit logs"
+        text="Source: public record request (Flock audit logs"
              " Jan 2024 - Jan 16 2026, Kenner's own searches excluded):"
              ' <a href="https://www.muckrock.com/foi/kenner-16256/'
              'public-records-request-flock-audits-201972/">'

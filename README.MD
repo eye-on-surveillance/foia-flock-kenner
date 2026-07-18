@@ -96,7 +96,7 @@ see `DATA_DICTIONARY.md` for detail.
 
 ## Aggregate the results to work with them
 
-One CSV per month is not practical. Step 01
+One CSV per month is not practical, Step 01
 aggregates each source into a single clean CSV in `cache/`, one line per
 record. Each script prints its own audit trail and exits with an error if
 any count is off; compare yours against the expected outputs below.
