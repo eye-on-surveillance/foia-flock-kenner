@@ -209,22 +209,13 @@ python3 -m sqlite3 cache/flock.db "SELECT search_type, COUNT(*) FROM org_audit G
 ## Graphs
 
 Each graph lives in its own folder under `results/`, holding the script
-that computes it and everything it produces: a self-contained interactive
-HTML page and static SVG/PNG images. The scripts read `cache/flock.db` --
+that computes it and everything it produces. The scripts read `cache/flock.db` --
 the database is the single source of data, and each script prints the
 numbers it plots so a chart can be checked by re-running its SQL queries.
-Unlike the pipeline, they use an external library (plotly), so they are
-run with `uv`, which reads each script's dependency header and installs
-what it needs on first run:
 
 ```
 uv run results/internal-vs-network/internal_vs_network.py
 ```
-
-Each script prints the numbers it plots plus a totals check against the
-known row counts, and fails instead of drawing a wrong chart. Charts use
-full months only (Jan 2024 - Dec 2025); January 2026 is excluded because
-the FOIA response only covers it through Jan 16.
 
 One-time setup: plotly's image exporter (kaleido) needs a Chrome binary
 and will say so if it can't find one. Fetch a private headless copy with:

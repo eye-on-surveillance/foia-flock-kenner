@@ -10,6 +10,10 @@ Each visualisation gets a folder with the detailed calculation for that graph.
 Inside each folder: a small and self-contained script to generate the graph, the map, or the data-viz.
 We try to keep it to basic SQL queries on the SQLite db built by `../setup-scripts/`.
 
+You can also look at the same data in the haveibeenflocked database, and see much more, nationwide FOIA results. 
+In this repository, the goal is to focus on Kenner, LA. 
+But you can look at nationwide usage of Flock Safety camera there : https://haveibeenflocked.com/reports 
+
 ## Internal usage VS network usage
 
 [![Monthly searches: outside agencies (bars) vs Kenner PD itself (line)](internal-vs-network/internal_vs_network.png)](internal-vs-network/internal_vs_network.png)
@@ -54,3 +58,19 @@ The state is parsed from the agency's name (two-letter code or full state name),
 The median agency ran just 221 searches that touched Kenner's cameras over the two years.
 
 See raw numbers and methodology: [`searches-by-state/`](searches-by-state/)
+
+## The US Postal Inspection Service anomaly
+
+[![USPS deep dive: reason categories and monthly timeline](usps-deep-dive/usps_deep_dive.png)](usps-deep-dive/usps_deep_dive.png)
+
+The Postal Service's police ran 52,572 searches touching Kenner's cameras in full months alone (Jan 2024 - Dec 2025) — more than the other 12 federal agencies combined, and ~200x more than Homeland Security Investigations or Border Patrol.
+Every single search was logged under one fully-redacted user identity, so the number of individual inspectors behind it is unknowable from this data.
+The reasons they gave are dominated by mail theft (20%), bare case numbers (21%), and generic "investigation" (18%); narcotics is the second substantive category (10% plus the `PMN`-coded cases). 489 searches gave non-reasons like `test` or `Image Download`.
+
+On the immigration question: exactly 5 of the 52,572 searches carry explicitly immigration-related reasons (`ERO MKE suspect`, `USPIS/HSI Investigation`), all of them after April 2025.
+The timeline is what stands out: USPIS stopped searching entirely from July 18, 2024 to April 3, 2025, resumed at higher volume than before, and after Border Patrol's access ended on June 23, 2025 it became the only federal agency still searching Kenner's cameras.
+The data cannot say what the opaque searches (case numbers, generic reasons) were for — only that the reason field can neither confirm nor rule out uses beyond postal crime.
+
+*External context, not derived from this dataset:* on April 29, 2025 the [Washington Post reported](https://www.washingtonpost.com/business/2025/04/29/usps-immigration-trump-deportations/) that USPIS had joined a DHS task force locating undocumented immigrants, prompting a [House Oversight inquiry](https://oversightdemocrats.house.gov/imo/media/doc/2025-06-11.lynch-et-al-to-postal-service-and-uspis-re-immigration.pdf); separately, USPIS has been running [Project Safe Delivery](https://www.uspis.gov/project-safe-delivery) against the national wave of mail theft and letter-carrier robberies since 2023, which is consistent with the mail-theft-heavy reasons above.
+
+See raw numbers, the full classification rules, and every unclassified reason: [`usps-deep-dive/`](usps-deep-dive/)
