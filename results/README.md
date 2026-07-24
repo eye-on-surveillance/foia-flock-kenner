@@ -59,7 +59,7 @@ The median agency ran just 221 searches that touched Kenner's cameras over the t
 
 See raw numbers and methodology: [`searches-by-state/`](searches-by-state/)
 
-## The US Postal Inspection Service anomaly
+## Focus US Postal Inspection Service 
 
 [![USPS deep dive: reason categories and monthly timeline](usps-deep-dive/usps_deep_dive.png)](usps-deep-dive/usps_deep_dive.png)
 
