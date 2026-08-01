@@ -13,8 +13,17 @@ You download the former and rebuild the latter.
 | `cache/` | generated artifacts: aggregated CSVs + `flock.db` (rebuilt, not in git) |
 | `results/` | human-friendly outputs (graphs, tables) |
 
-Requirements: Python 3.8+ with SQLite 3.37+ 
- The graph scripts use plotly and run via [uv](https://docs.astral.sh/uv/), which handles their dependencies.
+Requirements: Python 3.10+, [uv](https://docs.astral.sh/uv/), SQLite 3.37+
+
+## Quick start
+
+```
+make db    # download FOIA data, aggregate, build SQLite database
+make viz   # regenerate all visualizations
+make test  # run tests (no database required)
+```
+
+Run `make help` for all targets. The steps below explain what each stage does if you prefer to run them individually.
 
 ## Obtain the public records request results
 
