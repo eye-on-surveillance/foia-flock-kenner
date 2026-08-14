@@ -84,3 +84,12 @@ On the network side, 6,291 of the 6,207,233 outside-agency searches in 2025 were
 Each bar shows the most-typed raw reasons next to it; the immigration formula and its 40 hand-reviewed false positives are documented in the folder.
 
 See raw numbers and methodology: [`search-reasons-2025/`](search-reasons-2025/)
+
+## When do the searches happen
+
+[![Hour-of-day × day-of-week heatmaps: Kenner PD vs outside agencies](temporal-patterns/temporal_patterns.png)](temporal-patterns/temporal_patterns.png)
+
+Searches concentrate on weekday business hours, peaking midday Tuesday and Wednesday: Mon-Fri 8am-6pm accounts for 49.8% of Kenner PD's own searches and 52.5% of the outside agencies'.
+But the cameras are queried around the clock — about 17% of searches on both sides run overnight (10pm-6am).
+
+See raw numbers and methodology: [`temporal-patterns/`](temporal-patterns/)
