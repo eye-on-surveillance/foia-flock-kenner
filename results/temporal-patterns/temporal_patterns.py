@@ -130,7 +130,7 @@ def build_figure(grids):
                  " Uniform spread = automated.</sup>",
         ),
         width=1100, height=500,
-        margin=dict(b=130),
+        margin=dict(b=160),
     )
 
     fig.add_annotation(
@@ -144,7 +144,8 @@ def build_figure(grids):
              " More info on"
              ' <a href="https://github.com/eye-on-surveillance/'
              'foia-flock-kenner">github.com/eye-on-surveillance</a>',
-        xref="paper", yref="paper", x=0, y=-0.25,
+        xref="paper", yref="paper", x=0.5, y=-0.38,
+        xanchor="center", yanchor="top",
         showarrow=False, font=dict(size=10, color="#666"),
     )
 
